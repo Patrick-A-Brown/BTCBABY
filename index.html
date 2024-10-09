@@ -3,34 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Little Website</title>
+    <title>Galactic Voyager X-9000</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+        :root {
+            --bg-color: #0a0a1f;
+            --text-color: #e0e0ff;
+            --accent-color: #00ffff;
+            --glow-color: rgba(0, 255, 255, 0.5);
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
             max-width: 800px;
             margin: 0 auto;
+            padding: 40px 20px;
         }
+
         h1 {
-            color: #333;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--glow-color);
+            animation: pulse 2s infinite;
         }
+
+        p {
+            font-size: 1.1rem;
+            text-align: justify;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
         img {
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 20px 0;
+            margin: 2rem auto;
+            border: 2px solid var(--accent-color);
+            border-radius: 10px;
+            box-shadow: 0 0 20px var(--glow-color);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: white;
+            opacity: 0.5;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
         }
     </style>
 </head>
 <body>
-    <h1>Little miss website over here</h1>
-    
-    <p>
-      This is the website I'm making for BTC 
-    </p>
-    
-    <a href="/about.html">Check me out</a>
+    <div class="stars"></div>
+    <div class="container">
+        <h1>Galactic Voyager X-9000</h1>
+        
+        <p>
+            Welcome aboard the Galactic Voyager X-9000, the pinnacle of interstellar travel technology. 
+            Our cutting-edge spacecraft is designed to traverse the cosmos with unparalleled speed and comfort. 
+            Equipped with quantum propulsion engines and a revolutionary AI navigation system, 
+            the X-9000 can reach the farthest corners of the known universe in a matter of parsecs.
+        </p>
+        
+        <img src="/placeholder.svg?height=400&width=600" alt="Galactic Voyager X-9000 Spaceship">
+        
+        <p>
+            Experience luxury beyond the stars with our state-of-the-art amenities, including zero-gravity lounges, 
+            holographic entertainment centers, and gourmet replicators capable of synthesizing cuisine from across the galaxy. 
+            Whether you're an intergalactic tourist or a seasoned space explorer, the Galactic Voyager X-9000 
+            promises an unforgettable journey through the cosmic tapestry of space and time.
+                        <br><br><a href="/about.html">Check me out</a>
+        </p>
+
+
+        
+    </div>
+
+    <script>
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 2}s`;
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
 </body>
 </html>
+
+
